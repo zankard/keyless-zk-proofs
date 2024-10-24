@@ -1,0 +1,8 @@
+/target
+formatted_input.json
+.idea
+groth16_vk.json
+keyless_config.json
+onchain_vk.json
+onchain_vk_2.json
+prover_request_payload.json

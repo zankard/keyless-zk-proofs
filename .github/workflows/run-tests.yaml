@@ -1,0 +1,45 @@
+name: run-cargo-test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Run linter
+    runs-on: ubuntu-latest-16-core
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.APTOS_BOT_PAT_USED_BY_PROVER_SERVICE_REPO_TO_CLONE_PRIVATE_SUBMODULES }}
+      #- uses: aptos-labs/aptos-core/.github/actions/rust-setup@main
+      - run: sudo apt-get update -y && sudo apt-get install -y gcc clang cmake make libyaml-dev nasm libgmp-dev libomp-dev
+      - run: cargo fmt --check && cargo xclippy
+  rust:
+    name: Run cargo test
+    runs-on: ubuntu-latest-16-core
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+          token: ${{ secrets.APTOS_BOT_PAT_USED_BY_PROVER_SERVICE_REPO_TO_CLONE_PRIVATE_SUBMODULES }}
+      #- uses: aptos-labs/aptos-core/.github/actions/rust-setup@main
+      - run: mkdir -p ~/.local/share/aptos-prover-service/setup_2024_05
+      - run: curl --location -o ~/.local/share/aptos-prover-service/setup_2024_05/prover_key.zkey https://github.com/aptos-labs/devnet-groth16-keys/raw/master/main_c.zkey
+      - run: curl --location -o ~/.local/share/aptos-prover-service/setup_2024_05/main_c https://github.com/aptos-labs/devnet-groth16-keys/raw/master/main_c_cpp/main_c
+      - run: curl --location -o ~/.local/share/aptos-prover-service/setup_2024_05/main_c.dat https://github.com/aptos-labs/devnet-groth16-keys/raw/master/main_c_cpp/main_c.dat
+      - run: curl --location -o ~/.local/share/aptos-prover-service/setup_2024_05/verification_key.json https://github.com/aptos-labs/devnet-groth16-keys/raw/master/verification_key.json
+      - run: chmod -R 777 ~/.local/share/aptos-prover-service
+      - run: sudo apt-get update -y && sudo apt-get install -y gcc clang cmake make libyaml-dev nasm libgmp-dev libomp-dev
+      - run: LD_LIBRARY_PATH=./rust-rapidsnark/rapidsnark/package/lib cargo test 
