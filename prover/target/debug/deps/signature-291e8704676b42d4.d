@@ -1,0 +1,11 @@
+/Users/michael/aptos-labs/prover-service/target/debug/deps/libsignature-291e8704676b42d4.rmeta: /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/lib.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/error.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/keypair.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/signature.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/signer.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/verifier.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/../README.md
+
+/Users/michael/aptos-labs/prover-service/target/debug/deps/signature-291e8704676b42d4.d: /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/lib.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/error.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/keypair.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/signature.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/signer.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/verifier.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/../README.md
+
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/lib.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/error.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/keypair.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/signature.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/signer.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/verifier.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/signature-1.6.4/src/../README.md:

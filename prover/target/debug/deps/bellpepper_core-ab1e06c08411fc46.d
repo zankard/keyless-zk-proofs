@@ -1,0 +1,14 @@
+/Users/michael/aptos-labs/prover-service/target/debug/deps/libbellpepper_core-ab1e06c08411fc46.rmeta: /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/lib.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/lc.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/constraint_system.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/mod.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/boolean.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/num.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/util_cs/mod.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/util_cs/test_cs.rs
+
+/Users/michael/aptos-labs/prover-service/target/debug/deps/bellpepper_core-ab1e06c08411fc46.d: /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/lib.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/lc.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/constraint_system.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/mod.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/boolean.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/num.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/util_cs/mod.rs /Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/util_cs/test_cs.rs
+
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/lib.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/lc.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/constraint_system.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/mod.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/boolean.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/gadgets/num.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/util_cs/mod.rs:
+/Users/michael/.cargo/registry/src/index.crates.io-6f17d22bba15001f/bellpepper-core-0.4.0/src/util_cs/test_cs.rs:
+
+# env-dep:CARGO_PKG_VERSION=0.4.0
