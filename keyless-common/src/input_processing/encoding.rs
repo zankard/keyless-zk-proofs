@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::api::{EphemeralPublicKeyBlinder, PoseidonHash};
+use crate::{EphemeralPublicKeyBlinder, PoseidonHash};
 use anyhow::{anyhow, Result};
 use aptos_types::{
     jwks::rsa::RSA_JWK, keyless::Pepper, transaction::authenticator::EphemeralPublicKey,
