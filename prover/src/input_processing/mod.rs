@@ -12,13 +12,15 @@ use self::{
 };
 use crate::input_processing::types::Input;
 use anyhow::Result;
-use aptos_keyless_common::input_processing::circuit_input_signals::{CircuitInputSignals, Padded};
-use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
-use aptos_keyless_common::input_processing::encoding::*;
-use aptos_keyless_common::input_processing::sha::{
-    compute_sha_padding_without_len, jwt_bit_len_binary, with_sha_padding_bytes,
+use aptos_keyless_common::{
+    input_processing::{
+        circuit_input_signals::{CircuitInputSignals, Padded},
+        config::CircuitPaddingConfig,
+        encoding::*,
+        sha::{compute_sha_padding_without_len, jwt_bit_len_binary, with_sha_padding_bytes},
+    },
+    PoseidonHash,
 };
-use aptos_keyless_common::PoseidonHash;
 use std::time::Instant;
 use tracing::info_span;
 
