@@ -5,7 +5,6 @@ pub mod field_parser;
 pub mod preprocess;
 pub mod public_inputs_hash;
 pub mod rsa;
-pub mod sha;
 pub mod types;
 
 use aptos_keyless_common::input_processing::circuit_input_signals::{CircuitInputSignals, Padded};
@@ -20,7 +19,7 @@ use crate::{
     input_processing::types::Input,
 };
 use anyhow::Result;
-use sha::{compute_sha_padding_without_len, jwt_bit_len_binary, with_sha_padding_bytes};
+use aptos_keyless_common::input_processing::sha::{compute_sha_padding_without_len, jwt_bit_len_binary, with_sha_padding_bytes};
 use std::time::Instant;
 use tracing::info_span;
 
@@ -34,7 +33,7 @@ pub fn derive_circuit_input_signals(
 
     let jwt_parts = &input.jwt_parts;
     let epk_blinder_fr = input.epk_blinder_fr;
-    let unsigned_jwt_with_padding = with_sha_padding_bytes(&input.jwt_parts.unsigned_undecoded());
+    let unsigned_jwt_with_padding = with_sha_padding_bytes(&input.jwt_parts.unsigned_undecoded().as_bytes());
     let signature = jwt_parts.signature()?;
     let (temp_pubkey_frs, temp_pubkey_len) = public_inputs_hash::compute_temp_pubkey_frs(&input)?;
     let public_inputs_hash = compute_public_inputs_hash(&input, config)?;
@@ -66,11 +65,11 @@ pub fn derive_circuit_input_signals(
         )
         .bytes_input(
             "jwt_len_bit_encoded",
-            &jwt_bit_len_binary(&jwt_parts.unsigned_undecoded()).as_bytes()?,
+            &jwt_bit_len_binary(&jwt_parts.unsigned_undecoded().as_bytes()).as_bytes()?,
         )
         .bytes_input(
             "padding_without_len",
-            &compute_sha_padding_without_len(&jwt_parts.unsigned_undecoded()).as_bytes()?,
+            &compute_sha_padding_without_len(&jwt_parts.unsigned_undecoded().as_bytes()).as_bytes()?,
         )
         .limbs_input("signature", &signature.as_64bit_limbs())
         .limbs_input("pubkey_modulus", &input.jwk.as_64bit_limbs())
