@@ -1,6 +1,0 @@
-[submodule "rust_rapidsnark"]
-	path = rust_rapidsnark
-	url = git@github.com:aptos-labs/rust_rapidsnark
-[submodule "rust-rapidsnark"]
-	path = rust-rapidsnark
-	url = git@github.com:aptos-labs/rust-rapidsnark.git
