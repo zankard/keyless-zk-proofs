@@ -1,6 +1,5 @@
 // Copyright © Aptos Foundation
 
-pub mod config;
 pub mod encoding;
 pub mod field_check_input;
 pub mod field_parser;
