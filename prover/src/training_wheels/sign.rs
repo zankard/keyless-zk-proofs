@@ -6,8 +6,9 @@ use aptos_types::{
     keyless::{Groth16Proof, Groth16ProofAndStatement},
     transaction::authenticator::{EphemeralPublicKey, EphemeralSignature},
 };
+use aptos_keyless_common::PoseidonHash;
 
-use crate::api::{PoseidonHash, ProverServiceResponse};
+use crate::api::ProverServiceResponse;
 
 pub fn sign(
     private_key: &Ed25519PrivateKey,

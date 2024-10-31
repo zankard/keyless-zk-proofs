@@ -5,14 +5,12 @@ use aptos_types::{
     transaction::authenticator::EphemeralPublicKey,
 };
 use serde::{Deserialize, Serialize};
+use aptos_keyless_common::PoseidonHash;
 
 //#[derive(Clone, Debug, Eq, PartialEq, Hash, Serialize, Deserialize)]
 //pub struct EphemeralPublicKeyBlinder(pub(crate) Vec<u8>);
 
 pub type EphemeralPublicKeyBlinder = Vec<u8>;
-
-// TODO can I wrap this in a struct while preserving serialization format?
-pub type PoseidonHash = [u8; 32];
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct RequestInput {

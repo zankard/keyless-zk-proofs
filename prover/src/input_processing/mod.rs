@@ -10,14 +10,12 @@ pub mod types;
 use aptos_keyless_common::input_processing::circuit_input_signals::{CircuitInputSignals, Padded};
 use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 use aptos_keyless_common::input_processing::encoding::*;
+use aptos_keyless_common::PoseidonHash;
 use self::{
     field_check_input::field_check_input_signals,
     public_inputs_hash::compute_public_inputs_hash,
 };
-use crate::{
-    api::PoseidonHash,
-    input_processing::types::Input,
-};
+use crate::input_processing::types::Input;
 use anyhow::Result;
 use aptos_keyless_common::input_processing::sha::{compute_sha_padding_without_len, jwt_bit_len_binary, with_sha_padding_bytes};
 use std::time::Instant;
