@@ -85,7 +85,7 @@ mod tests {
     fn test_compute_sha_padding_all_lengths() {
         for i in 0..65 {
             let jwt_dummy_payload = "a".repeat(i);
-            let _with_sha_padding = with_sha_padding_bytes(&jwt_dummy_payload.as_bytes());
+            let _with_sha_padding = with_sha_padding_bytes(jwt_dummy_payload.as_bytes());
         }
     }
 
@@ -144,7 +144,7 @@ mod tests {
         let ascii_decoded = jwt.payload_decoded().unwrap();
         assert_eq!(expected_decoded, ascii_decoded);
 
-        let with_sha_padding = with_sha_padding_bytes(&jwt.unsigned_undecoded().as_bytes());
+        let with_sha_padding = with_sha_padding_bytes(jwt.unsigned_undecoded().as_bytes());
         assert_eq!(with_sha_padding, expected_with_sha_padding_bytes);
     }
 }

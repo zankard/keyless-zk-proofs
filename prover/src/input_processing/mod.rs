@@ -31,7 +31,7 @@ pub fn derive_circuit_input_signals(
 
     let jwt_parts = &input.jwt_parts;
     let epk_blinder_fr = input.epk_blinder_fr;
-    let unsigned_jwt_with_padding = with_sha_padding_bytes(&input.jwt_parts.unsigned_undecoded().as_bytes());
+    let unsigned_jwt_with_padding = with_sha_padding_bytes(input.jwt_parts.unsigned_undecoded().as_bytes());
     let signature = jwt_parts.signature()?;
     let (temp_pubkey_frs, temp_pubkey_len) = public_inputs_hash::compute_temp_pubkey_frs(&input)?;
     let public_inputs_hash = compute_public_inputs_hash(&input, config)?;
@@ -63,11 +63,11 @@ pub fn derive_circuit_input_signals(
         )
         .bytes_input(
             "jwt_len_bit_encoded",
-            &jwt_bit_len_binary(&jwt_parts.unsigned_undecoded().as_bytes()).as_bytes()?,
+            &jwt_bit_len_binary(jwt_parts.unsigned_undecoded().as_bytes()).as_bytes()?,
         )
         .bytes_input(
             "padding_without_len",
-            &compute_sha_padding_without_len(&jwt_parts.unsigned_undecoded().as_bytes()).as_bytes()?,
+            &compute_sha_padding_without_len(jwt_parts.unsigned_undecoded().as_bytes()).as_bytes()?,
         )
         .limbs_input("signature", &signature.as_64bit_limbs())
         .limbs_input("pubkey_modulus", &input.jwk.as_64bit_limbs())

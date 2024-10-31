@@ -213,7 +213,7 @@ mod tests {
         let jwt_parts = &input.jwt_parts;
         let _unsigned_jwt_no_padding = jwt_parts.unsigned_undecoded();
         //let jwt_parts: Vec<&str> = input.jwt_b64.split(".").collect();
-        let _unsigned_jwt_with_padding = with_sha_padding_bytes(&jwt_parts.unsigned_undecoded().as_bytes());
+        let _unsigned_jwt_with_padding = with_sha_padding_bytes(jwt_parts.unsigned_undecoded().as_bytes());
         let _signature = jwt_parts.signature().unwrap();
         let payload_decoded = jwt_parts.payload_decoded().unwrap();
 
