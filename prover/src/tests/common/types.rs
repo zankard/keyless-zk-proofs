@@ -3,9 +3,10 @@
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use super::{gen_test_ephemeral_pk, gen_test_ephemeral_pk_blinder, get_test_pepper};
+use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::FromFr};
 use crate::{
     api::{EphemeralPublicKeyBlinder, RequestInput},
-    input_processing::{config::CircuitConfig, encoding::FromFr, rsa::RsaPrivateKey},
+    input_processing::rsa::RsaPrivateKey,
     training_wheels::verification_logic::compute_nonce,
 };
 use aptos_types::{
@@ -163,7 +164,7 @@ impl<T: Serialize + WithNonce + Clone> ProofTestCase<T> {
         extra_field: Option<String>,
         uid_key: String,
         idc_aud: Option<String>,
-        config: &CircuitConfig,
+        config: &CircuitPaddingConfig,
     ) -> Self {
         let epk = gen_test_ephemeral_pk();
         let epk_blinder = gen_test_ephemeral_pk_blinder();
@@ -202,7 +203,7 @@ impl<T: Serialize + WithNonce + Clone> ProofTestCase<T> {
         }
     }
 
-    pub fn compute_nonce(self, config: &CircuitConfig) -> Self {
+    pub fn compute_nonce(self, config: &CircuitPaddingConfig) -> Self {
         let nonce = compute_nonce(
             self.epk_expiry_time_secs,
             &self.epk,

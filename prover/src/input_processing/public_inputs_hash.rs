@@ -163,13 +163,9 @@ pub fn compute_public_inputs_hash(input: &Input, config: &CircuitPaddingConfig) 
 
 #[cfg(test)]
 mod tests {
+    use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::{FromB64, JwtParts}, sha::with_sha_padding_bytes};
     use super::compute_public_inputs_hash;
-    use crate::input_processing::{
-        config::CircuitConfig,
-        encoding::{FromB64, JwtParts},
-        sha::with_sha_padding_bytes,
-        types::Input,
-    };
+    use crate::input_processing::types::Input;
     use aptos_crypto::{
         ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
         encoding_type::EncodingType,
@@ -217,7 +213,7 @@ mod tests {
         let jwt_parts = &input.jwt_parts;
         let _unsigned_jwt_no_padding = jwt_parts.unsigned_undecoded();
         //let jwt_parts: Vec<&str> = input.jwt_b64.split(".").collect();
-        let _unsigned_jwt_with_padding = with_sha_padding_bytes(&jwt_parts.unsigned_undecoded());
+        let _unsigned_jwt_with_padding = with_sha_padding_bytes(&jwt_parts.unsigned_undecoded().as_bytes());
         let _signature = jwt_parts.signature().unwrap();
         let payload_decoded = jwt_parts.payload_decoded().unwrap();
 
@@ -227,7 +223,7 @@ mod tests {
         )
         .unwrap();
 
-        let config: CircuitConfig = serde_yaml::from_str(
+        let config: CircuitPaddingConfig = serde_yaml::from_str(
             &fs::read_to_string("conversion_config.yml").expect("Unable to read file"),
         )
         .expect("should parse correctly");

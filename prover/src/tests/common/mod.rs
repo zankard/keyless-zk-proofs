@@ -4,11 +4,11 @@ use self::types::{DefaultTestJWKKeyPair, TestJWKKeyPair, WithNonce};
 use crate::load_vk::prepared_vk;
 use crate::tests::common::types::ProofTestCase;
 use crate::training_wheels;
+use aptos_keyless_common::input_processing::{encoding::AsFr, config::CircuitPaddingConfig};
 use crate::{
     api::ProverServiceResponse,
     config::{self, ProverServiceConfig},
     handlers::prove_handler,
-    input_processing::{config::CircuitConfig, encoding::AsFr},
     jwk_fetching::{KeyID, DECODING_KEY_CACHE},
     state::ProverServiceState,
 };
@@ -51,7 +51,7 @@ pub fn init_test_full_prover(use_new_setup: bool) -> FullProver {
         .expect("failed to initialize rapidsnark prover")
 }
 
-pub fn get_test_circuit_config() -> CircuitConfig {
+pub fn get_test_circuit_config() -> CircuitPaddingConfig {
     serde_yaml::from_str(&fs::read_to_string("conversion_config.yml").expect("Unable to read file"))
         .expect("should parse correctly")
 }
