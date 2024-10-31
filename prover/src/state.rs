@@ -7,12 +7,12 @@ use figment::{
 };
 use rust_rapidsnark::FullProver;
 use serde::{Deserialize, Serialize};
+use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 
 use crate::groth16_vk::{OnChainGroth16VerificationKey, SnarkJsGroth16VerificationKey};
 use crate::prover_key::TrainingWheelsKeyPair;
 use crate::{
     config::{self, ProverServiceConfig},
-    input_processing::config::CircuitConfig,
 };
 use std::env;
 use tokio::sync::Mutex;
@@ -32,7 +32,7 @@ pub struct ProverServiceState {
     pub tw_keypair_default: TrainingWheelsKeyPair,
     pub tw_keypair_new: Option<TrainingWheelsKeyPair>,
     pub config: ProverServiceConfig,
-    pub circuit_config: CircuitConfig,
+    pub circuit_config: CircuitPaddingConfig,
     // Ensures that only one circuit is being proven at a time
 }
 
@@ -59,7 +59,7 @@ impl ProverServiceState {
         let tw_keypair_default = TrainingWheelsKeyPair::from_sk(private_key);
         let tw_keypair_new = private_key_new.map(TrainingWheelsKeyPair::from_sk);
 
-        let circuit_config: CircuitConfig = serde_yaml::from_str(
+        let circuit_config: CircuitPaddingConfig = serde_yaml::from_str(
             &fs::read_to_string("conversion_config.yml")
                 .expect("Unable to read circuit config file"),
         )

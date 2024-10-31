@@ -1,15 +1,16 @@
 // Copyright © Aptos Foundation
 
 use super::{field_check_input, field_parser::FieldParser};
-use crate::input_processing::{config::CircuitConfig, types::Input};
+use crate::input_processing::types::Input;
 use anyhow::{anyhow, Result};
 use aptos_crypto::poseidon_bn254;
 use aptos_types::keyless::{Configuration, IdCommitment};
 use ark_bn254::Fr;
+use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 
 pub fn compute_idc_hash(
     input: &Input,
-    config: &CircuitConfig,
+    config: &CircuitPaddingConfig,
     pepper_fr: Fr,
     jwt_payload: &str,
 ) -> Result<Fr> {
@@ -62,7 +63,7 @@ pub fn compute_temp_pubkey_frs(input: &Input) -> Result<([Fr; 3], Fr)> {
     ))
 }
 
-pub fn compute_public_inputs_hash(input: &Input, config: &CircuitConfig) -> anyhow::Result<Fr> {
+pub fn compute_public_inputs_hash(input: &Input, config: &CircuitPaddingConfig) -> anyhow::Result<Fr> {
     let pepper_fr = input.pepper_fr;
     let jwt_parts = &input.jwt_parts;
     let jwk = &input.jwk;

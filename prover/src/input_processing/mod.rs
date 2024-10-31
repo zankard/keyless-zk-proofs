@@ -1,6 +1,5 @@
 // Copyright © Aptos Foundation
 
-pub mod circuit_input_signals;
 pub mod config;
 pub mod encoding;
 pub mod field_check_input;
@@ -11,13 +10,15 @@ pub mod rsa;
 pub mod sha;
 pub mod types;
 
+use aptos_keyless_common::input_processing::circuit_input_signals::{CircuitInputSignals, Padded};
+use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 use self::{
-    circuit_input_signals::Padded, field_check_input::field_check_input_signals,
+    field_check_input::field_check_input_signals,
     public_inputs_hash::compute_public_inputs_hash,
 };
 use crate::{
     api::PoseidonHash,
-    input_processing::{circuit_input_signals::CircuitInputSignals, encoding::*, types::Input},
+    input_processing::{encoding::*, types::Input},
 };
 use anyhow::Result;
 use ark_bn254::Fr;
@@ -38,7 +39,7 @@ impl FromHex for Fr {
 
 pub fn derive_circuit_input_signals(
     input: Input,
-    config: &config::CircuitConfig,
+    config: &CircuitPaddingConfig,
 ) -> Result<(CircuitInputSignals<Padded>, PoseidonHash), anyhow::Error> {
     // TODO add metrics instead of just printing out elapsed time
     let _start_time = Instant::now();

@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 
+use aptos_keyless_common::input_processing::circuit_input_signals::{CircuitInputSignals, Unpadded};
 use super::{
-    circuit_input_signals::{CircuitInputSignals, Unpadded},
     field_parser::ParsedField,
     types::Input,
 };
