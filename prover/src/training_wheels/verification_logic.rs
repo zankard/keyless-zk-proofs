@@ -10,14 +10,13 @@ use aptos_types::{
 use ark_bn254::Fr;
 use http::StatusCode;
 use jsonwebtoken::{Algorithm, DecodingKey, Validation};
-use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
+use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::{FromB64, JwtHeader, JwtParts, JwtPayload}};
 
 
 use crate::{
     api::RequestInput,
     error::{ErrorWithCode, ThrowCodeOnError},
     input_processing::{
-        encoding::{FromB64, JwtHeader, JwtParts, JwtPayload},
         field_parser::FieldParser,
         types::Input,
     },

@@ -90,6 +90,15 @@ impl FromHex for EphemeralPublicKey {
     }
 }
 
+impl FromHex for Fr {
+    fn from_hex(s: &str) -> Result<Self>
+    where
+        Self: Sized,
+    {
+        Ok(Fr::from_le_bytes_mod_order(&hex::decode(s)?))
+    }
+}
+
 #[derive(Debug)]
 pub struct JwtParts {
     header: String,

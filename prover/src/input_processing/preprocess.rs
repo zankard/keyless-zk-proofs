@@ -1,7 +1,7 @@
 // Copyright © Aptos Foundation
 
+use aptos_keyless_common::input_processing::encoding::{AsFr as _, FromB64 as _, JwtParts};
 use super::{
-    encoding::{AsFr as _, FromB64 as _, JwtParts},
     types::Input,
     JwtHeader, JwtPayload,
 };

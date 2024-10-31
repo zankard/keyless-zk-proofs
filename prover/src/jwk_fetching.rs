@@ -1,9 +1,9 @@
 // Copyright © Aptos Foundation
 
+use aptos_keyless_common::input_processing::encoding::{FromB64, JwtHeader, JwtParts, JwtPayload};
 use crate::{
     api::RequestInput,
     config::OidcProvider,
-    input_processing::encoding::{FromB64, JwtHeader, JwtParts, JwtPayload},
 };
 use anyhow::{anyhow, Result};
 use aptos_types::jwks::rsa::RSA_JWK;

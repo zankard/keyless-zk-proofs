@@ -1,6 +1,5 @@
 // Copyright © Aptos Foundation
 
-pub mod encoding;
 pub mod field_check_input;
 pub mod field_parser;
 pub mod preprocess;
@@ -11,30 +10,19 @@ pub mod types;
 
 use aptos_keyless_common::input_processing::circuit_input_signals::{CircuitInputSignals, Padded};
 use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
+use aptos_keyless_common::input_processing::encoding::*;
 use self::{
     field_check_input::field_check_input_signals,
     public_inputs_hash::compute_public_inputs_hash,
 };
 use crate::{
     api::PoseidonHash,
-    input_processing::{encoding::*, types::Input},
+    input_processing::types::Input,
 };
 use anyhow::Result;
-use ark_bn254::Fr;
-use ark_ff::PrimeField;
 use sha::{compute_sha_padding_without_len, jwt_bit_len_binary, with_sha_padding_bytes};
 use std::time::Instant;
 use tracing::info_span;
-
-// TODO this works when I have it here, but doesn't when I move it to encoding.rs. Why?
-impl FromHex for Fr {
-    fn from_hex(s: &str) -> Result<Self>
-    where
-        Self: Sized,
-    {
-        Ok(Fr::from_le_bytes_mod_order(&hex::decode(s)?))
-    }
-}
 
 pub fn derive_circuit_input_signals(
     input: Input,
