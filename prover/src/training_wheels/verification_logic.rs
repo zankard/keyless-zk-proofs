@@ -4,22 +4,21 @@ use std::{
 };
 
 use aptos_crypto::poseidon_bn254;
+use aptos_keyless_common::input_processing::{
+    config::CircuitPaddingConfig,
+    encoding::{FromB64, JwtHeader, JwtParts, JwtPayload},
+};
 use aptos_types::{
     jwks::rsa::RSA_JWK, keyless::Claims, transaction::authenticator::EphemeralPublicKey,
 };
 use ark_bn254::Fr;
 use http::StatusCode;
 use jsonwebtoken::{Algorithm, DecodingKey, Validation};
-use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::{FromB64, JwtHeader, JwtParts, JwtPayload}};
-
 
 use crate::{
     api::RequestInput,
     error::{ErrorWithCode, ThrowCodeOnError},
-    input_processing::{
-        field_parser::FieldParser,
-        types::Input,
-    },
+    input_processing::{field_parser::FieldParser, types::Input},
     jwk_fetching,
 };
 use anyhow::{bail, Context, Result};

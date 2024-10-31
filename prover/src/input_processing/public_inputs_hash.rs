@@ -4,9 +4,9 @@ use super::{field_check_input, field_parser::FieldParser};
 use crate::input_processing::types::Input;
 use anyhow::{anyhow, Result};
 use aptos_crypto::poseidon_bn254;
+use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 use aptos_types::keyless::{Configuration, IdCommitment};
 use ark_bn254::Fr;
-use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 
 pub fn compute_idc_hash(
     input: &Input,
@@ -63,7 +63,10 @@ pub fn compute_temp_pubkey_frs(input: &Input) -> Result<([Fr; 3], Fr)> {
     ))
 }
 
-pub fn compute_public_inputs_hash(input: &Input, config: &CircuitPaddingConfig) -> anyhow::Result<Fr> {
+pub fn compute_public_inputs_hash(
+    input: &Input,
+    config: &CircuitPaddingConfig,
+) -> anyhow::Result<Fr> {
     let pepper_fr = input.pepper_fr;
     let jwt_parts = &input.jwt_parts;
     let jwk = &input.jwk;
@@ -163,13 +166,17 @@ pub fn compute_public_inputs_hash(input: &Input, config: &CircuitPaddingConfig) 
 
 #[cfg(test)]
 mod tests {
-    use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::{FromB64, JwtParts}, sha::with_sha_padding_bytes};
     use super::compute_public_inputs_hash;
     use crate::input_processing::types::Input;
     use aptos_crypto::{
         ed25519::{Ed25519PrivateKey, Ed25519PublicKey},
         encoding_type::EncodingType,
         poseidon_bn254,
+    };
+    use aptos_keyless_common::input_processing::{
+        config::CircuitPaddingConfig,
+        encoding::{FromB64, JwtParts},
+        sha::with_sha_padding_bytes,
     };
     use aptos_types::{
         jwks::rsa::RSA_JWK, keyless::Configuration, transaction::authenticator::EphemeralPublicKey,
@@ -213,7 +220,8 @@ mod tests {
         let jwt_parts = &input.jwt_parts;
         let _unsigned_jwt_no_padding = jwt_parts.unsigned_undecoded();
         //let jwt_parts: Vec<&str> = input.jwt_b64.split(".").collect();
-        let _unsigned_jwt_with_padding = with_sha_padding_bytes(jwt_parts.unsigned_undecoded().as_bytes());
+        let _unsigned_jwt_with_padding =
+            with_sha_padding_bytes(jwt_parts.unsigned_undecoded().as_bytes());
         let _signature = jwt_parts.signature().unwrap();
         let payload_decoded = jwt_parts.payload_decoded().unwrap();
 

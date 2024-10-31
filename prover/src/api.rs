@@ -1,11 +1,11 @@
 // Copyright © Aptos Foundation
 
+use aptos_keyless_common::PoseidonHash;
 use aptos_types::{
     keyless::{Groth16Proof, Pepper},
     transaction::authenticator::EphemeralPublicKey,
 };
 use serde::{Deserialize, Serialize};
-use aptos_keyless_common::PoseidonHash;
 
 //#[derive(Clone, Debug, Eq, PartialEq, Hash, Serialize, Deserialize)]
 //pub struct EphemeralPublicKeyBlinder(pub(crate) Vec<u8>);

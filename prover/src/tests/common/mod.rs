@@ -4,7 +4,6 @@ use self::types::{DefaultTestJWKKeyPair, TestJWKKeyPair, WithNonce};
 use crate::load_vk::prepared_vk;
 use crate::tests::common::types::ProofTestCase;
 use crate::training_wheels;
-use aptos_keyless_common::input_processing::{encoding::AsFr, config::CircuitPaddingConfig};
 use crate::{
     api::ProverServiceResponse,
     config::{self, ProverServiceConfig},
@@ -17,6 +16,7 @@ use aptos_crypto::{
     encoding_type::EncodingType,
     Uniform,
 };
+use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::AsFr};
 use aptos_types::{
     jwks::rsa::RSA_JWK, keyless::Pepper, transaction::authenticator::EphemeralPublicKey,
 };

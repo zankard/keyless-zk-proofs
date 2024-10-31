@@ -1,19 +1,17 @@
 use std::fs;
 
 use aptos_crypto::ed25519::Ed25519PrivateKey;
+use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 use figment::{
     providers::{Env, Format, Yaml},
     Figment,
 };
 use rust_rapidsnark::FullProver;
 use serde::{Deserialize, Serialize};
-use aptos_keyless_common::input_processing::config::CircuitPaddingConfig;
 
+use crate::config::{self, ProverServiceConfig};
 use crate::groth16_vk::{OnChainGroth16VerificationKey, SnarkJsGroth16VerificationKey};
 use crate::prover_key::TrainingWheelsKeyPair;
-use crate::{
-    config::{self, ProverServiceConfig},
-};
 use std::env;
 use tokio::sync::Mutex;
 

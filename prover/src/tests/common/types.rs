@@ -3,12 +3,12 @@
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use super::{gen_test_ephemeral_pk, gen_test_ephemeral_pk_blinder, get_test_pepper};
-use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::FromFr};
 use crate::{
     api::{EphemeralPublicKeyBlinder, RequestInput},
     input_processing::rsa::RsaPrivateKey,
     training_wheels::verification_logic::compute_nonce,
 };
+use aptos_keyless_common::input_processing::{config::CircuitPaddingConfig, encoding::FromFr};
 use aptos_types::{
     jwks::rsa::RSA_JWK, keyless::Pepper, transaction::authenticator::EphemeralPublicKey,
 };

@@ -176,11 +176,11 @@ fn pad_if_needed(
                 global_input_max_lengths.get(k).copied().unwrap_or(x.len()) - x.len();
             x.extend(vec![0; zeros_needed]);
             CircuitInputSignal::Limbs(x)
-        },
+        }
 
         CircuitInputSignal::Bytes(b) => {
             CircuitInputSignal::Bytes(pad_bytes(&b, global_input_max_lengths[k])?)
-        },
+        }
     })
 }
 
