@@ -6,7 +6,7 @@
 
 use tracing::debug;
 
-use super::bits::Bits;
+use aptos_keyless_common::input_processing::bits::Bits;
 
 pub fn jwt_bit_len(jwt: &str) -> usize {
     jwt.len() * 8

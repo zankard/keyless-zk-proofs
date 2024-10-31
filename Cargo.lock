@@ -3968,6 +3968,7 @@ dependencies = [
  "anyhow",
  "aptos-crypto",
  "aptos-crypto-derive",
+ "aptos-keyless-common",
  "aptos-types",
  "ark-bls12-381",
  "ark-bn254",

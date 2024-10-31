@@ -20,6 +20,7 @@ ark-ff = { workspace = true }
 ark-groth16 = { workspace = true }
 ark-serialize = { workspace = true }
 ark-std = { workspace = true }
+aptos-keyless-common = { workspace = true }
 axum = { workspace = true }
 axum-extra = { workspace = true }
 axum-prometheus = { workspace = true }

@@ -1,6 +1,5 @@
 // Copyright © Aptos Foundation
 
-pub mod bits;
 pub mod circuit_input_signals;
 pub mod config;
 pub mod encoding;
