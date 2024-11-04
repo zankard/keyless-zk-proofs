@@ -244,6 +244,86 @@ version = "0.1.0"
 source = "git+https://github.com/aptos-labs/aptos-core?branch=main#b163f034c0e1e01b59cef44694da9dbccb4d5b63"
 
 [[package]]
+name = "aptos-infallible"
+version = "0.1.0"
+source = "git+https://github.com/aptos-labs/aptos-core#c126ec4a00f779e47b34ef0eaaa6896280f2a62c"
+
+[[package]]
+name = "aptos-keyless-circuit"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "aptos-crypto",
+ "aptos-keyless-common",
+ "aptos-logger",
+ "ark-bn254",
+ "ark-ff",
+ "base64 0.13.1",
+ "hex",
+ "itertools 0.13.0",
+ "num-bigint 0.4.4",
+ "num-modular",
+ "num-traits",
+ "rand 0.7.3",
+ "rand_chacha 0.3.1",
+ "rsa",
+ "serde_json",
+ "sha2 0.10.8",
+ "tempfile",
+ "tokio",
+]
+
+[[package]]
+name = "aptos-keyless-common"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "aptos-types",
+ "ark-bn254",
+ "ark-ff",
+ "base64 0.13.1",
+ "hex",
+ "num-bigint 0.4.4",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "tracing",
+]
+
+[[package]]
+name = "aptos-log-derive"
+version = "0.1.0"
+source = "git+https://github.com/aptos-labs/aptos-core#c126ec4a00f779e47b34ef0eaaa6896280f2a62c"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
+name = "aptos-logger"
+version = "0.1.0"
+source = "git+https://github.com/aptos-labs/aptos-core#c126ec4a00f779e47b34ef0eaaa6896280f2a62c"
+dependencies = [
+ "aptos-infallible 0.1.0 (git+https://github.com/aptos-labs/aptos-core)",
+ "aptos-log-derive",
+ "backtrace",
+ "chrono",
+ "erased-serde",
+ "futures",
+ "hostname",
+ "once_cell",
+ "prometheus",
+ "serde",
+ "serde_json",
+ "strum 0.24.1",
+ "strum_macros 0.24.3",
+ "tokio",
+ "tracing",
+ "tracing-subscriber 0.3.18",
+]
+
+[[package]]
 name = "aptos-runtimes"
 version = "0.1.0"
 source = "git+https://github.com/aptos-labs/aptos-core?branch=main#b163f034c0e1e01b59cef44694da9dbccb4d5b63"
@@ -263,7 +343,7 @@ dependencies = [
  "aptos-crypto-derive",
  "aptos-dkg",
  "aptos-experimental-runtimes",
- "aptos-infallible",
+ "aptos-infallible 0.1.0 (git+https://github.com/aptos-labs/aptos-core?branch=main)",
  "ark-bn254",
  "ark-ff",
  "ark-groth16",
@@ -1659,6 +1739,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
 
 [[package]]
+name = "erased-serde"
+version = "0.3.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6c138974f9d5e7fe373eb04df7cae98833802ae4b11c24ac7039a21d5af4b26c"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "errno"
 version = "0.3.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2177,6 +2266,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "hostname"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3c731c3e10504cc8ed35cfe2f1db4c9274c3d35fa486e3b31df46f068ef3e867"
+dependencies = [
+ "libc",
+ "match_cfg",
+ "winapi",
+]
+
+[[package]]
 name = "http"
 version = "0.2.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2676,6 +2776,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "match_cfg"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ffbee8634e0d45d258acb448e7eaab3fce7a0a467395d4d9f228e3c1f01fb2e4"
+
+[[package]]
 name = "matchers"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3091,6 +3197,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d869c01cc0c455284163fd0092f1f93835385ccab5a98a0dcc497b2f8bf055a9"
 dependencies = [
  "autocfg",
+ "num-integer",
+ "num-traits",
+]
+
+[[package]]
+name = "num-modular"
+version = "0.6.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "17bb261bf36fa7d83f4c294f834e91256769097b3cb505d44831e0a179ac647f"
+dependencies = [
+ "num-bigint 0.4.4",
  "num-integer",
  "num-traits",
 ]
@@ -3851,6 +3968,7 @@ dependencies = [
  "anyhow",
  "aptos-crypto",
  "aptos-crypto-derive",
+ "aptos-keyless-common",
  "aptos-types",
  "ark-bls12-381",
  "ark-bn254",
@@ -4259,6 +4377,7 @@ dependencies = [
  "pkcs1",
  "pkcs8",
  "rand_core 0.6.4",
+ "sha2 0.10.8",
  "signature 2.2.0",
  "spki",
  "subtle",

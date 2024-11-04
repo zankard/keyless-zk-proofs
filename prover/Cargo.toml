@@ -1,0 +1,72 @@
+[package]
+name = "prover-service"
+version = "0.1.0"
+edition = "2021"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+debug = true
+overflow-checks = true
+
+[dependencies]
+anyhow = { workspace = true }
+aptos-crypto = { workspace = true }
+aptos-crypto-derive = { workspace = true }
+aptos-types = { workspace = true }
+ark-bls12-381 = { workspace = true }
+ark-bn254 = { workspace = true }
+ark-ec = { workspace = true }
+ark-ff = { workspace = true }
+ark-groth16 = { workspace = true }
+ark-serialize = { workspace = true }
+ark-std = { workspace = true }
+aptos-keyless-common = { workspace = true }
+axum = { workspace = true }
+axum-extra = { workspace = true }
+axum-prometheus = { workspace = true }
+axum-server = { workspace = true }
+backtrace = { workspace = true }
+base64 = { workspace = true }
+bcs = { workspace = true }
+dashmap = { workspace = true }
+figment = { workspace = true }
+futures = { workspace = true }
+futures-util = { workspace = true }
+hex = { workspace = true }
+http = { workspace = true }
+indicatif = { workspace = true }
+init-tracing-opentelemetry = { workspace = true }
+
+jsonwebtoken = { workspace = true }
+lazy_static = { workspace = true }
+log = { workspace = true }
+num-bigint = { workspace = true }
+num-traits = { workspace = true }
+once_cell = { workspace = true }
+prometheus = { workspace = true }
+rand = { workspace = true }
+rand_core = { workspace = true }
+regex = { workspace = true }
+reqwest = { workspace = true }
+rsa = { workspace = true }
+rust-rapidsnark = { path = "rust-rapidsnark" }
+rustls = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+serial_test = { workspace = true }
+sha2 = { workspace = true }
+shellexpand = { workspace = true }
+tempfile = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+[patch.crates-io]
+merlin = { git = "https://github.com/aptos-labs/merlin" }
+x25519-dalek = { git = "https://github.com/aptos-labs/x25519-dalek", branch = "zeroize_v1" }
+
+
